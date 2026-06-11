@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, Text, DateTime
 from sqlalchemy.sql import func
-
+from sqlalchemy.orm import relationship
+from app.tags.models import entity_tags
 from app.core.database import Base
 
 
@@ -19,6 +20,12 @@ class Entity(Base):
     city = Column(String(100), nullable=True, index=True)
     region = Column(String(100), nullable=True)
     country = Column(String(100), nullable=True, index=True)
+
+    tags = relationship(
+    "Tag",
+    secondary=entity_tags,
+    back_populates="entities",
+    )
 
     notes = Column(Text, nullable=True)
 
