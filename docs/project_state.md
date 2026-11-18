@@ -28,7 +28,7 @@ The application will centralize:
 ### Backend Module Structure
 
 * entities ✅
-* tags ⏳
+* tags ✅
 * interactions ⏳
 * bookings ⏳
 * shows ⏳
@@ -97,8 +97,6 @@ Planned entity categories:
 
 ## Tags Module Status
 
-In Progress
-
 Implemented:
 
 * Tag model
@@ -108,12 +106,10 @@ Implemented:
 * Name normalization strategy
 * Unique tag enforcement
 
-Planned:
-
-* entity_tags many-to-many relationship table
-* Tag assignment endpoints
-* Tag removal endpoints
-* Tag filtering queries
+* Many-to-many association between entities and tags
+* Tag assignment and removal endpoints
+* Entity responses include tags
+* Entity list can filter by tag ID
 
 Examples:
 
@@ -125,21 +121,6 @@ Examples:
 * texas
 * mexico
 * psych-rock
-
----
-
-## Current Task
-
-Complete Tags Module
-
-Remaining work:
-
-* entity_tags association table
-* Entity ↔ Tag relationships
-* Assign tag endpoint
-* Remove tag endpoint
-* EntityRead tag serialization
-* Router registration and testing
 
 ---
 

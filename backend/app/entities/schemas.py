@@ -1,7 +1,9 @@
 from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+
+from app.tags.schemas import TagRead
 
 
 class EntityBase(BaseModel):
@@ -40,6 +42,7 @@ class EntityUpdate(BaseModel):
 
 class EntityRead(EntityBase):
     id: int
+    tags: list[TagRead] = Field(default_factory=list)
     created_at: datetime
     updated_at: datetime
 

@@ -8,8 +8,9 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Daymares Management App")
 
-app.include_router(entities_router)
 app.include_router(tags_router)
+app.include_router(entities_router, prefix="/entities", tags=["entities"])
+app.include_router(entities_router, include_in_schema=False)
 
 
 @app.get("/")

@@ -22,9 +22,10 @@ class Entity(Base):
     country = Column(String(100), nullable=True, index=True)
 
     tags = relationship(
-    "Tag",
-    secondary=entity_tags,
-    back_populates="entities",
+        "Tag",
+        secondary=entity_tags,
+        back_populates="entities",
+        order_by="Tag.name",
     )
 
     notes = Column(Text, nullable=True)

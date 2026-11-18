@@ -11,8 +11,8 @@ router = APIRouter()
 
 
 @router.get("/", response_model=List[EntityRead])
-def list_entities(db: Session = Depends(get_db)):
-    return service.get_entities(db)
+def list_entities(tag_id: int | None = None, db: Session = Depends(get_db)):
+    return service.get_entities(db, tag_id)
 
 
 @router.get("/{entity_id}", response_model=EntityRead)
@@ -52,3 +52,13 @@ def delete_entity(entity_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Entity not found")
 
     return entity
+
+
+@router.put("/{entity_id}/tags/{tag_id}", response_model=EntityRead)
+def assign_tag(entity_id: int, tag_id: int, db: Session = Depends(get_db)):
+    return service.set_entity_tag(db, entity_id, tag_id, assigned=True)
+
+
+@router.delete("/{entity_id}/tags/{tag_id}", response_model=EntityRead)
+def remove_tag(entity_id: int, tag_id: int, db: Session = Depends(get_db)):
+    return service.set_entity_tag(db, entity_id, tag_id, assigned=False)
