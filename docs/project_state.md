@@ -135,24 +135,24 @@ Examples:
 
 ## Frontend Roadmap
 
-Phase 1
+### Guided scheduling
 
-* React application setup
-* Entity CRUD screens
-* Tag management screens
-* Entity detail page
+Start with **What would you like to do?** Offer actions such as **Book shows** and **Schedule a photoshoot**, then reveal only the questions relevant to the selection. Use dropdowns for short lists and searchable selectors for cities and venues.
 
-Phase 2
+* **One show** — Ask for the city and a date or date range, then let the user choose a venue from the CRM. For example, selecting Austin, TX could display a city map with selectable pins for saved venues alongside a searchable list.
+* **Multiple shows** — Ask for an approximate date range and a geographic scope. For a U.S. tour, show selectable city pins on a country map. Let the user add and reorder stops, then choose a venue within each city. Keep the target show count optional so a seven-show tour can start with only a few known stops.
+* **Photoshoot** — Ask for a date and time and whether the location is known. Show existing commitments while choosing a time and offer a map when choosing a location.
 
-* Interaction timeline
-* Task dashboard
-* Booking pipeline board
+### Calendar and scheduling conflicts
 
-Phase 3
+Show scheduled activities in one calendar, including tentative holds, confirmed commitments, and travel blocks when tour planning is added. Check for overlaps as soon as the user enters a time. Warn about overlapping tentative holds and show a stronger warning that names any conflicting confirmed commitment.
 
-* Show calendar
-* Reporting
-* Search and filtering
+### Build order
+
+1. **First scheduling workflow** — Set up the React frontend and build single-show scheduling with a calendar. Reuse CRM venue records. Let the user pick a venue, hold a date, check for conflicts, and confirm the show.
+2. **Venue map and contact management** — Add the venue map as a second way to choose from the same list. Build entity management screens, an entity detail page, and tag management.
+3. **Broader scheduling** — Add photoshoot scheduling, the multi-show flow with city maps and travel blocks, and a booking pipeline board. Build the interaction timeline and task dashboard as their backend modules become available.
+4. **Later additions** — Reporting and broader search and filtering.
 
 ---
 
